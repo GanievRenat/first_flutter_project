@@ -5,13 +5,9 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:FlutterGalleryApp/models/user.dart';
-import 'package:FlutterGalleryApp/user_holder.dart';
-import 'package:flutter/material.dart';
+import '../lib/models/user.dart';
+import '../lib/user_holder.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:FlutterGalleryApp/main.dart';
-import 'package:FlutterGalleryApp/app.dart';
 
 void main() {
   UserHolder holder;

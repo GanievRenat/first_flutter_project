@@ -1,5 +1,6 @@
-import 'package:FlutterGalleryApp/models/user_util.dart';
-//import 'package:FlutterGalleryApp/string_util.dart';
+mixin UserUtil {
+  String capitalize(String s) => s[0].toUpperCase() + s.substring(1).toLowerCase();
+}
 
 enum LoginType { email, phone }
 

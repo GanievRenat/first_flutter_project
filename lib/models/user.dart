@@ -1,10 +1,10 @@
-mixin UserUtil {
+mixin UserUtils {
   String capitalize(String s) => s[0].toUpperCase() + s.substring(1).toLowerCase();
 }
 
 enum LoginType { email, phone }
 
-class User with UserUtil {
+class User with UserUtils {
   String email;
   String phone;
   String _lastName;

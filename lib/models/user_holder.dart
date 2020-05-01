@@ -1,4 +1,4 @@
-import 'models/user.dart';
+import 'user.dart';
 
 class UserHolder {
   Map<String, User> users = {};

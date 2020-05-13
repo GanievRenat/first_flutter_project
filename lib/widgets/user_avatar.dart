@@ -18,9 +18,6 @@ class UserAvatar extends StatelessWidget {
         fit: BoxFit.cover,
         width: 40,
         height: 40,
-        placeholder: (context, url) => Center(
-          child: CircularProgressIndicator(),
-        ),
         errorWidget: (context, url, error) => Center(
           child: Icon(Icons.error),
         ),

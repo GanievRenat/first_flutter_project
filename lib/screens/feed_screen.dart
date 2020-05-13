@@ -1,3 +1,4 @@
+import 'package:FlutterGalleryApp/screens/photo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:FlutterGalleryApp/res/res.dart';
 import 'package:FlutterGalleryApp/widgets/widgets.dart';
@@ -30,7 +31,23 @@ class _FeedState extends State<Feed> {
       body: ListView.builder(itemBuilder: (BuildContext context, int index) {
         return Column(
           children: <Widget>[
-            _buildItem(),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FullScreenImage(
+                      name: 'Ganiev Renat',
+                      userName: 'inkognitum',
+                      altDescription: 'Тестовое описание',
+                      photo: kFlutterDash,
+                      heroTag: 'photo_${index}',
+                    ),
+                  ),
+                );
+              },
+              child: _buildItem(index: index),
+            ),
             Divider(thickness: 2, color: AppColors.mercury),
           ],
         );
@@ -38,12 +55,15 @@ class _FeedState extends State<Feed> {
     );
   }
 
-  Widget _buildItem() {
+  Widget _buildItem({int index}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Photo(
-          photoLink: kFlutterDash,
+        Hero(
+          tag: 'photo_${index}',
+          child: Photo(
+            photoLink: kFlutterDash,
+          ),
         ),
         _buildPhotoMeta(),
         Padding(

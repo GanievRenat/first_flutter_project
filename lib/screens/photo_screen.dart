@@ -7,18 +7,42 @@ const String kFlutterDush =
     'https://flutter.dev/assets/404/dash_nest-c64796b59b65042a2b40fae5764c13b7477a592db79eaf04c86298dcb75b78ea.png';
 
 class FullScreenImage extends StatefulWidget {
-  FullScreenImage({this.altDescription, this.userName, this.name, this.photo, Key key}) : super(key: key);
+  FullScreenImage({this.altDescription, this.userName, this.name, this.photo, this.heroTag, Key key}) : super(key: key);
 
   final String altDescription;
   final String userName;
   final String name;
   final String photo;
+  final String heroTag;
 
   @override
   _PhotoScreenState createState() => _PhotoScreenState();
 }
 
-class _PhotoScreenState extends State<FullScreenImage> {
+class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _animationController = AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    _playAnimation();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _playAnimation() async {
+    try {
+      await _animationController.forward().orCancel;
+    } on TickerCanceled {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,58 +63,30 @@ class _PhotoScreenState extends State<FullScreenImage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Photo(
-            photoLink: (widget.photo != null && widget.photo.isNotEmpty) ? widget.photo : kFlutterDush,
+          Hero(
+            tag: widget.heroTag,
+            child: Photo(
+              photoLink: (widget.photo != null && widget.photo.isNotEmpty) ? widget.photo : kFlutterDush,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Text(
               (widget.altDescription != null) ? widget.altDescription : '',
+              textAlign: TextAlign.right,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.h3,
             ),
           ),
-          _buildPhotoMeta(widget.name, widget.userName),
+          PhotoMetaUser(controller: _animationController, name: widget.name, nikName: widget.userName),
           _buildLikeAndButton(),
         ],
       ),
     );
   }
-}
-
-Widget _buildPhotoMeta(String name, String nikName) {
-  return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: <Widget>[
-            UserAvatar('https://sun9-11.userapi.com/c846217/v846217468/9f056/6yiX9CTwo4k.jpg'),
-            SizedBox(width: 6),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  (name != null) ? name : '',
-                  style: AppStyles.h1Black,
-                ),
-                Text(
-                  (nikName != null) ? '@${nikName}' : '',
-                  style: AppStyles.h5Black.copyWith(
-                    color: AppColors.manatee,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
 }
 
 Widget _buildLikeAndButton() {

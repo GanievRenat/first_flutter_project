@@ -28,7 +28,7 @@ class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateM
   void initState() {
     // TODO: implement initState
     super.initState();
-    _animationController = AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    _animationController = AnimationController(duration: const Duration(seconds: 1), vsync: this);
     _playAnimation();
   }
 
@@ -84,10 +84,11 @@ class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateM
             ),
           ),
           PhotoMetaUser(
-              controller: _animationController,
-              name: widget.name,
-              nikName: widget.userName,
-              userPhoto: widget.userPhoto),
+            controller: _animationController,
+            name: widget.name,
+            nikName: widget.userName,
+            userPhoto: widget.userPhoto,
+          ),
           _buildLikeAndButton(),
         ],
       ),

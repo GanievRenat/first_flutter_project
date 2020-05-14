@@ -28,7 +28,7 @@ class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateM
   void initState() {
     // TODO: implement initState
     super.initState();
-    _animationController = AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    _animationController = AnimationController(duration: const Duration(milliseconds: 1500), vsync: this);
     _playAnimation();
   }
 

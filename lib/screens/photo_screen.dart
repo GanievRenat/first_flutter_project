@@ -7,12 +7,14 @@ const String kFlutterDush =
     'https://flutter.dev/assets/404/dash_nest-c64796b59b65042a2b40fae5764c13b7477a592db79eaf04c86298dcb75b78ea.png';
 
 class FullScreenImage extends StatefulWidget {
-  FullScreenImage({this.altDescription, this.userName, this.name, this.photo, this.heroTag, Key key}) : super(key: key);
+  FullScreenImage({this.altDescription, this.userName, this.name, this.photo, this.userPhoto, this.heroTag, Key key})
+      : super(key: key);
 
   final String altDescription;
   final String userName;
   final String name;
   final String photo;
+  final String userPhoto;
   final String heroTag;
 
   @override
@@ -149,7 +151,7 @@ class Button extends StatelessWidget {
 }
 
 class PhotoMetaUser extends StatelessWidget {
-  PhotoMetaUser({this.controller, this.name, this.nikName, Key key})
+  PhotoMetaUser({this.controller, this.name, this.nikName, this.userPhoto, Key key})
       : opacityUserAvatar = Tween<double>(begin: 0, end: 1).animate(
           CurvedAnimation(
             parent: controller,
@@ -177,6 +179,7 @@ class PhotoMetaUser extends StatelessWidget {
   final Animation<double> opacityUserName;
   final String name;
   final String nikName;
+  final String userPhoto;
 
   Widget _buildPhotoMeta(BuildContext context, Widget child) {
     return Padding(
@@ -188,7 +191,7 @@ class PhotoMetaUser extends StatelessWidget {
             children: <Widget>[
               Opacity(
                 opacity: opacityUserAvatar.value,
-                child: UserAvatar('https://sun9-11.userapi.com/c846217/v846217468/9f056/6yiX9CTwo4k.jpg'),
+                child: UserAvatar((userPhoto != null && userPhoto.isNotEmpty) ? userPhoto : kFlutterDush),
               ),
               SizedBox(width: 6),
               Opacity(

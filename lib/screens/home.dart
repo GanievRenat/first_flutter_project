@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavyBarItem(
             asset: AppIcons.home,
-            title: Text('Home'),
+            title: Text('Feed'),
             activeColor: AppColors.dodgerBlue,
             inactiveColor: AppColors.manatee,
           ),

@@ -83,7 +83,11 @@ class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateM
               style: AppStyles.h3,
             ),
           ),
-          PhotoMetaUser(controller: _animationController, name: widget.name, nikName: widget.userName),
+          PhotoMetaUser(
+              controller: _animationController,
+              name: widget.name,
+              nikName: widget.userName,
+              userPhoto: widget.userPhoto),
           _buildLikeAndButton(),
         ],
       ),

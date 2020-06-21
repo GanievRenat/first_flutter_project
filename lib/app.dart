@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         accentColor: Colors.blue,
-        textTheme: AppStyles.buildAppTextTheme(),
+        textTheme: buildAppTextTheme(),
       ),
       home: Builder(
         builder: (context) {

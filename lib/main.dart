@@ -21,7 +21,7 @@ class ConnectivityOverlay {
   void showOverlay(BuildContext context, Widget child) {
     // реализуйте отображение Overlay.
     overlayEntry = _getOverlayEntry(child);
-    final overlayState = Overlay.of(context);
+    final overlayState = Overlay.of(context, rootOverlay: true);
     overlayState.insert(overlayEntry);
   }
 

@@ -18,8 +18,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   StreamSubscription subscription;
   var connectiveOverlay = ConnectivityOverlay();
-
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   BuildContext _contextForOverlay;
 
   @override
@@ -51,8 +49,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    _contextForOverlay = context;
     return MaterialApp(
-      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -60,11 +58,13 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.blue,
         textTheme: buildAppTextTheme(),
       ),
-      home: Builder(
-        builder: (context) {
-          _contextForOverlay = context;
-          return Home();
-        },
+      home: Scaffold(
+        body: Builder(
+          builder: (context) {
+            _contextForOverlay = context;
+            return Home();
+          },
+        ),
       ),
     );
   }

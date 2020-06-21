@@ -1,8 +1,17 @@
+import 'dart:async';
+
 import 'package:FlutterGalleryApp/screens/feed_screen.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:FlutterGalleryApp/res/res.dart';
 
+import '../main.dart';
+
 class Home extends StatefulWidget {
+  Home(this.onConnectivityChanged);
+
+  final Stream<ConnectivityResult> onConnectivityChanged;
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -14,6 +23,36 @@ class _HomeState extends State<Home> {
     Container(),
     Container(),
   ];
+
+  StreamSubscription subscription;
+  var connectiveOverlay = ConnectivityOverlay();
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = widget.onConnectivityChanged.listen((ConnectivityResult result) {
+      switch (result) {
+        case ConnectivityResult.wifi:
+          // Вызовете удаление Overlay тут
+          connectiveOverlay.removeOverlay(context);
+          break;
+        case ConnectivityResult.mobile:
+          // Вызовете удаление Overlay тут
+          connectiveOverlay.removeOverlay(context);
+          break;
+        case ConnectivityResult.none:
+          // Вызовете отображения Overlay тут
+          connectiveOverlay.showOverlay(context, Text('No internet connection'));
+          break;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

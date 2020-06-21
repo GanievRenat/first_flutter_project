@@ -22,9 +22,9 @@ class _FeedState extends State<Feed> {
         elevation: 0.0,
         title: Text(
           'Photo',
-          style: AppStyles.h1Black.copyWith(
-            color: AppColors.black,
-          ),
+          style: Theme.of(context).textTheme.headline1.copyWith(
+                color: AppColors.black,
+              ),
         ),
         backgroundColor: AppColors.white,
       ),
@@ -65,14 +65,14 @@ class _FeedState extends State<Feed> {
             photoLink: kFlutterDash,
           ),
         ),
-        _buildPhotoMeta(),
+        _buildPhotoMeta(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Text(
             'Тестовый текст описания',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: AppStyles.h3,
+            style: Theme.of(context).textTheme.headline3,
           ),
         )
       ],
@@ -80,7 +80,7 @@ class _FeedState extends State<Feed> {
   }
 }
 
-Widget _buildPhotoMeta() {
+Widget _buildPhotoMeta(BuildContext context) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
     child: Row(
@@ -96,13 +96,13 @@ Widget _buildPhotoMeta() {
               children: <Widget>[
                 Text(
                   'Ganiev Renat',
-                  style: AppStyles.h2Black,
+                  style: Theme.of(context).textTheme.headline2,
                 ),
                 Text(
                   '@inkognitum',
-                  style: AppStyles.h5Black.copyWith(
-                    color: AppColors.manatee,
-                  ),
+                  style: Theme.of(context).textTheme.headline5.copyWith(
+                        color: AppColors.manatee,
+                      ),
                 ),
               ],
             ),

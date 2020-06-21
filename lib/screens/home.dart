@@ -8,7 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int currenTab = 0;
+  int currentTab = 0;
   List<Widget> pages = [
     Feed(),
     Container(),
@@ -23,10 +23,10 @@ class _HomeState extends State<Home> {
         curve: Curves.ease,
         itemSelected: (int index) {
           setState(() {
-            currenTab = index;
+            currentTab = index;
           });
         },
-        currentTab: currenTab,
+        currentTab: currentTab,
         items: [
           BottomNavyBarItem(
             asset: AppIcons.home,
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: pages[currenTab],
+      body: pages[currentTab],
     );
   }
 }

@@ -44,12 +44,12 @@ class AppStyles {
 
   static const h2Black = TextStyle(
     fontSize: 17,
-    height: 22 / 18,
+    height: 1.2,
     fontFamily: 'Roboto',
     color: AppColors.black,
     fontWeight: FontWeight.normal,
     fontStyle: FontStyle.normal,
-    letterSpacing: -0.41,
+    letterSpacing: -0.40,
   );
 
   static const h1Black = TextStyle(

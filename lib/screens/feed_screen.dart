@@ -22,9 +22,7 @@ class _FeedState extends State<Feed> {
         elevation: 0.0,
         title: Text(
           'Photo',
-          style: Theme.of(context).textTheme.headline1.copyWith(
-                color: AppColors.black,
-              ),
+          style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: AppColors.white,
       ),
@@ -100,9 +98,7 @@ Widget _buildPhotoMeta(BuildContext context) {
                 ),
                 Text(
                   '@inkognitum',
-                  style: Theme.of(context).textTheme.headline5.copyWith(
-                        color: AppColors.manatee,
-                      ),
+                  style: Theme.of(context).textTheme.headline5,
                 ),
               ],
             ),

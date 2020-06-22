@@ -55,9 +55,7 @@ class _PhotoScreenState extends State<FullScreenImage> with TickerProviderStateM
         elevation: 0.0,
         title: Text(
           'Photo',
-          style: Theme.of(context).textTheme.headline1.copyWith(
-                color: AppColors.black,
-              ),
+          style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: AppColors.white,
         leading: IconButton(
